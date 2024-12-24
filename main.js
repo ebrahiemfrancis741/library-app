@@ -21,6 +21,8 @@ function addBooksToDOM(library){
     let deleteIcon;
     let iconButton;
 
+    bookContainer.replaceChildren();
+
     for(let i = 0; i < library.length; i++){
         book = document.createElement("div");
         book.classList = "book";
@@ -84,7 +86,9 @@ function addBooksToDOM(library){
         iconButton.appendChild(deleteIcon);
         iconButton.addEventListener("click", function(e){
           e.preventDefault();
-          alert("poes");
+          let bookId = e.target.id;
+          library.splice(bookId, 1);
+          addBooksToDOM(library);
         })
         bookInfoRow.appendChild(iconButton);
         book.appendChild(bookInfoRow);
