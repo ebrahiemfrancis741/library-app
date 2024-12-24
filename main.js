@@ -18,10 +18,13 @@ function addBooksToDOM(library){
     let bookInfoRow;
     let bookInfoLabel;
     let bookInfoValue;
+    let deleteIcon;
+    let iconButton;
 
     for(let i = 0; i < library.length; i++){
         book = document.createElement("div");
         book.classList = "book";
+        book.id = i;
         bookContainer.appendChild(book);
 
         // row 1
@@ -71,6 +74,20 @@ function addBooksToDOM(library){
         bookInfoRow.appendChild(bookInfoLabel);
         bookInfoRow.appendChild(bookInfoValue);
         book.appendChild(bookInfoRow);
+
+        //row5
+        bookInfoRow = document.createElement("div");
+        bookInfoRow.classList = "icons"
+        deleteIcon = document.createElement("img");
+        deleteIcon.src = "icons/delete-outline.svg";
+        iconButton = document.createElement("button");
+        iconButton.appendChild(deleteIcon);
+        iconButton.addEventListener("click", function(e){
+          e.preventDefault();
+          alert("poes");
+        })
+        bookInfoRow.appendChild(iconButton);
+        book.appendChild(bookInfoRow);
     }
 }
 
@@ -83,7 +100,6 @@ function main(){
     addBookToLibrary(c, library);
 
     addBooksToDOM(library);
-    console.log(library);
 }
 
 main();
